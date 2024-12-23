@@ -1,117 +1,62 @@
 --Get out of the code P Diddy
 --Made By frogie
---Not a rat for those who wanna spam that in my comments again check the code if you don't trust before commenting dumba--
+--New update no blur and moon and better shades ig its night :D
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 
-local lighting = game:GetService("Lighting")
-
-lighting.Ambient = Color3.fromRGB(100, 100, 100)
-lighting.OutdoorAmbient = Color3.fromRGB(80, 80, 80)
-lighting.FogColor = Color3.fromRGB(130, 130, 130)
-lighting.FogStart = 0
-lighting.FogEnd = 1000
-lighting.ShadowSoftness = 0.3
-
-lighting.Brightness = 2.5
-lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
-lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
-lighting.ClockTime = 18
-lighting.ExposureCompensation = 0.3
-lighting.GlobalShadows = true
-lighting.ShadowSoftness = 0.2
-lighting.SunRays.Intensity = 0.1
+local L = game:GetService("Lighting")
+L.Brightness = 1
+L.ColorShift_Bottom = Color3.fromRGB(11, 0, 20)
+L.ColorShift_Top = Color3.fromRGB(240, 127, 14)
+L.OutdoorAmbient = Color3.fromRGB(34, 0, 49)
+L.ClockTime = 0
+L.FogColor = Color3.fromRGB(30, 20, 35)
+L.FogEnd = 1000
+L.FogStart = 0
+L.ExposureCompensation = 0.24
+L.ShadowSoftness = 0
+L.Ambient = Color3.fromRGB(0, 0, 0)
 
 local Bloom = Instance.new("BloomEffect")
 Bloom.Intensity = 0.1
 Bloom.Threshold = 0
 Bloom.Size = 100
-Bloom.Parent = lighting
-
-local Tropic = Instance.new("Sky")
-Tropic.Name = "Tropic"
-Tropic.SkyboxUp = "http://www.roblox.com/asset/?id=169210149"
-Tropic.SkyboxLf = "http://www.roblox.com/asset/?id=169210133"
-Tropic.SkyboxBk = "http://www.roblox.com/asset/?id=169210090"
-Tropic.SkyboxFt = "http://www.roblox.com/asset/?id=169210121"
-Tropic.StarCount = 100
-Tropic.SkyboxDn = "http://www.roblox.com/asset/?id=169210108"
-Tropic.SkyboxRt = "http://www.roblox.com/asset/?id=169210143"
-Tropic.Parent = Bloom
+Bloom.Parent = L
 
 local Sky = Instance.new("Sky")
 Sky.SkyboxUp = "http://www.roblox.com/asset/?id=196263782"
 Sky.SkyboxLf = "http://www.roblox.com/asset/?id=196263721"
 Sky.SkyboxBk = "http://www.roblox.com/asset/?id=196263721"
 Sky.SkyboxFt = "http://www.roblox.com/asset/?id=196263721"
-Sky.CelestialBodiesShown = false
+Sky.CelestialBodiesShown = true
 Sky.SkyboxDn = "http://www.roblox.com/asset/?id=196263643"
 Sky.SkyboxRt = "http://www.roblox.com/asset/?id=196263721"
-Sky.Parent = Bloom
-
-Bloom.Parent = lighting
+Sky.Parent = L
 
 local Blur = Instance.new("BlurEffect")
 Blur.Size = 2
-Blur.Parent = lighting
+Blur.Parent = L
 
-local Inaritaisha = Instance.new("ColorCorrectionEffect")
-Inaritaisha.Name = "InariTaisha"
-Inaritaisha.Saturation = 0.05
-Inaritaisha.TintColor = Color3.fromRGB(255, 224, 219)
-Inaritaisha.Parent = lighting
-
-local Normal = Instance.new("ColorCorrectionEffect")
-Normal.Name = "Normal"
-Normal.Enabled = false
-Normal.Saturation = -0.2
-Normal.TintColor = Color3.fromRGB(255, 232, 215)
-Normal.Parent = lighting
+local ColorCorrection = Instance.new("ColorCorrectionEffect")
+ColorCorrection.Name = "WarmNight"
+ColorCorrection.Saturation = -0.2
+ColorCorrection.TintColor = Color3.fromRGB(255, 230, 180)
+ColorCorrection.Parent = L
 
 local SunRays = Instance.new("SunRaysEffect")
 SunRays.Intensity = 0.05
-SunRays.Parent = lighting
+SunRays.Parent = L
 
-local Sunset = Instance.new("Sky")
-Sunset.Name = "Sunset"
-Sunset.SkyboxUp = "rbxassetid://323493360"
-Sunset.SkyboxLf = "rbxassetid://323494252"
-Sunset.SkyboxBk = "rbxassetid://323494035"
-Sunset.SkyboxFt = "rbxassetid://323494130"
-Sunset.SkyboxDn = "rbxassetid://323494368"
-Sunset.SunAngularSize = 14
-Sunset.SkyboxRt = "rbxassetid://323494067"
-Sunset.Parent = lighting
+local moonDecal = Instance.new("Decal")
+moonDecal.Texture = "rbxassetid://5364982044"
+moonDecal.Parent = game.Lighting
 
-local Takayama = Instance.new("ColorCorrectionEffect")
-Takayama.Name = "Takayama"
-Takayama.Enabled = false
-Takayama.Saturation = -0.3
-Takayama.Contrast = 0.1
-Takayama.TintColor = Color3.fromRGB(235, 214, 204)
-Takayama.Parent = lighting
+local moonLight = Instance.new("PointLight")
+moonLight.Parent = workspace.Terrain
+moonLight.Brightness = 10
+moonLight.Range = 3000
+moonLight.Color = Color3.fromRGB(255, 245, 210)
+moonLight.Shadows = true
 
-local function brightenLights()
-    for _, obj in pairs(game:GetDescendants()) do
-        if obj:IsA("PointLight") or obj:IsA("SpotLight") or obj:IsA("SurfaceLight") then
-            obj.Brightness = obj.Brightness * 2
-            obj.Range = obj.Range * 1.5
-        end
-    end
-end
-
-brightenLights()
-
-lighting.ClockTime = 6.7
-lighting.FogColor = Color3.fromRGB(94, 76, 106)
-lighting.ExposureCompensation = 0.24
-lighting.ShadowSoftness = 0
-lighting.Ambient = Color3.fromRGB(59, 33, 27)
-
-lighting.Brightness = 2.14
-lighting.ColorShift_Bottom = Color3.fromRGB(11, 0, 20)
-lighting.ColorShift_Top = Color3.fromRGB(240, 127, 14)
-lighting.OutdoorAmbient = Color3.fromRGB(34, 0, 49)
-lighting.FogEnd = 17000
-lighting.FogStart = 0
+L.ClockTime = 0
