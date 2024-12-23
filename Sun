@@ -1,0 +1,61 @@
+--Here cums the sun do do do dooo
+
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+local L = game:GetService("Lighting")
+L.Brightness = 2
+L.ColorShift_Bottom = Color3.fromRGB(255, 140, 60)
+L.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+L.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+L.ClockTime = 12
+L.FogColor = Color3.fromRGB(255, 255, 255)
+L.FogEnd = 1000
+L.FogStart = 0
+L.ExposureCompensation = 0.4
+L.ShadowSoftness = 0.2
+L.Ambient = Color3.fromRGB(255, 255, 255)
+
+local Bloom = Instance.new("BloomEffect")
+Bloom.Intensity = 0.2
+Bloom.Threshold = 0
+Bloom.Size = 50
+Bloom.Parent = L
+
+local Sky = Instance.new("Sky")
+Sky.SkyboxUp = "http://www.roblox.com/asset/?id=196263782"
+Sky.SkyboxLf = "http://www.roblox.com/asset/?id=196263721"
+Sky.SkyboxBk = "http://www.roblox.com/asset/?id=196263721"
+Sky.SkyboxFt = "http://www.roblox.com/asset/?id=196263721"
+Sky.CelestialBodiesShown = true
+Sky.SkyboxDn = "http://www.roblox.com/asset/?id=196263643"
+Sky.SkyboxRt = "http://www.roblox.com/asset/?id=196263721"
+Sky.Parent = L
+
+local Blur = Instance.new("BlurEffect")
+Blur.Size = 1
+Blur.Parent = L
+
+local ColorCorrection = Instance.new("ColorCorrectionEffect")
+ColorCorrection.Name = "DayTime"
+ColorCorrection.Saturation = 0.1
+ColorCorrection.TintColor = Color3.fromRGB(255, 255, 240)
+ColorCorrection.Parent = L
+
+local SunRays = Instance.new("SunRaysEffect")
+SunRays.Intensity = 0.2
+SunRays.Parent = L
+
+local sunDecal = Instance.new("Decal")
+sunDecal.Texture = "rbxassetid://4586703325"
+sunDecal.Parent = game.Lighting
+
+local sunLight = Instance.new("PointLight")
+sunLight.Parent = workspace.Terrain
+sunLight.Brightness = 15
+sunLight.Range = 5000
+sunLight.Color = Color3.fromRGB(255, 255, 180)
+sunLight.Shadows = true
+
+L.ClockTime = 12
